@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.app.facerecognition.viewModel.MainViewModel" />
+        <variable
+            name="contract"
+            type="com.app.facerecognition.callBack.MainCallBack" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:background="@color/background"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
+
+        <Button
+            android:id="@+id/actions"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/orange_gradient"
+            android:text="ACTIONS"
+            android:textColor="@color/white"
+            android:onClick="@{() -> contract.onActionClick()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/face_preview"
+            app:layout_constraintVertical_bias="0.25" />
+        <FrameLayout
+            android:id="@+id/container"
+            android:layout_width="297dp"
+            android:layout_height="279dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.060000002">
+
+            <Button
+                android:id="@+id/camera_switch"
+                android:onClick="@{() -> contract.onCameraSwitchClick()}"
+                android:layout_width="68dp"
+                android:layout_height="65dp"
+                android:layout_marginStart="229dp"
+                android:layout_marginEnd="229dp"
+                android:textColor="@color/btnColor"
+                android:layout_marginRight="229dp"
+                android:background="@drawable/cam"
+                android:backgroundTint="@color/teal_200"
+                android:elevation="1dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_conversion_absoluteHeight="63dp"
+                tools:layout_conversion_absoluteWidth="62dp" />
+
+            <androidx.camera.view.PreviewView
+                android:id="@+id/previewView"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+            </androidx.camera.view.PreviewView>
+        </FrameLayout>
+
+        <ImageButton
+            android:id="@+id/add_face"
+            android:onClick="@{() -> contract.onAddFaceClick()}"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="164dp"
+            android:visibility="@{viewModel.addFaceVisibility, default=`visible`}"
+            android:layout_marginBottom="168dp"
+            android:elevation="2dp"
+            app:layout_constraintBottom_toBottomOf="@+id/face_preview"
+            app:layout_constraintStart_toStartOf="@+id/face_preview"
+            app:srcCompat="@android:drawable/ic_input_add" />
+
+        <ImageView
+            android:id="@+id/face_preview"
+            android:layout_width="203dp"
+            android:layout_height="200dp"
+            android:background="#2C7E57C2"
+            android:elevation="1dp"
+            android:visibility="@{viewModel.facePreviewVisibility, default=`visible`}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container"
+            app:layout_constraintVertical_bias="0.435"
+            tools:srcCompat="@android:drawable/screen_background_light_transparent" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/container">
+
+            <Button
+                android:id="@+id/recognize"
+                android:layout_width="200dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/orange_gradient"
+                android:onClick="@{() -> contract.onRecognizeClick()}"
+                android:rotation="0"
+                android:rotationX="0"
+                android:rotationY="0"
+                android:text="@{viewModel.recognizeText, default =`Add Face`}"
+                android:textAlignment="center"
+                android:textColor="@color/white"
+                android:visibility="visible"
+                tools:visibility="visible" />
+
+        </LinearLayout>
+        <TextView
+            android:id="@+id/reco_name"
+            android:layout_width="164dp"
+            android:layout_height="wrap_content"
+            android:hint="Add Face"
+            android:text="@{viewModel.recoNameText}"
+            android:visibility="@{viewModel.recoNameVisibility, default =`visible`}"
+            android:textAlignment="center"
+            android:textColor="@color/btnColor"
+            android:textSize="22sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@+id/face_preview"
+            app:layout_constraintEnd_toEndOf="@+id/face_preview"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="@+id/face_preview"
+            app:layout_constraintTop_toTopOf="@+id/face_preview"
+            app:layout_constraintVertical_bias="0.479" />
+
+        <TextView
+            android:id="@+id/preview_info"
+            android:layout_width="164dp"
+            android:layout_height="165dp"
+            android:textColor="@color/btnColor"
+            android:textSize="15sp"
+            android:text="@{viewModel.previewInfoText}"
+            app:layout_constraintBottom_toBottomOf="@+id/face_preview"
+            app:layout_constraintEnd_toEndOf="@+id/face_preview"
+            app:layout_constraintHorizontal_bias="0.487"
+            app:layout_constraintStart_toStartOf="@+id/face_preview"
+            app:layout_constraintTop_toTopOf="@+id/face_preview"
+            app:layout_constraintVertical_bias="0.914" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
