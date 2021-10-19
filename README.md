@@ -26,20 +26,18 @@ Use Import from Version Control in Android Studio or Clone repo and open the pro
 ```bash
 git clone https://github.com/AbhinavS99/AbhinavS99-Realtime-Face-Recognition-with-TfLite.git
 ```
-Application file : [Face_Recognition.apk]()
+Application file : [Face_Recognition.apk](https://drive.google.com/file/d/1JTSS6dog-eTv9zfMa9ixRaRguTW3gQtw/view?usp=sharing)
 
 ## Usage
 <table>
   <tr>
     <td><b>1.Add Face</b></td>
-     <td><b>2.Import Face</b></td>
-     <td><b>3.Recognize Face</b></td>
+     <td><b>2.Recognize Face</b></td>
      
   </tr>
   <tr>
-    <td><img src="demo/add_face.gif" width=270 height=480></td>
-  <td><img src="demo/import photo.gif" width=270 height=480></td>
-    <td><img src="demo/recognize_face.gif" width=270 height=480></td>
+    <td><img src="images/add_face.jpeg" width=270 height=480></td>
+    <td><img src="images/recognize_face.jpeg" width=270 height=480></td>
   
   </tr>
  </table>
@@ -50,12 +48,10 @@ Application file : [Face_Recognition.apk]()
   <tr>
     <td><b>Actions</b></td>
      <td><b>View Recognitions</b></td>
-     <td><b>Update Recognitions</b></td>
   </tr>
   <tr>
-    <td><img src="demo/actions.jpeg" width=270 height=480></td>
-    <td><img src="demo/view_reco.jpeg" width=270 height=480></td>
-    <td><img src="demo/update_reco.jpeg" width=270 height=480></td>
+    <td><img src="images/actions.jpeg" width=270 height=480></td>
+    <td><img src="images/view_reco.jpeg" width=270 height=480></td>
   </tr>
  </table>
  
